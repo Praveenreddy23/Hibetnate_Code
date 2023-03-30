@@ -2,6 +2,8 @@ package com.hibernateApp.firstProject;
 
 import javax.persistence.Embeddable;
 
+ //The @Embeddable annotation is used to mark a class as being embeddable, meaning its properties can be included in another class as a value type. The class marked with @Embeddable is called the embeddable class
+
 @Embeddable
 public class Certificate {
 	
