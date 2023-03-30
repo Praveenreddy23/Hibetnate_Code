@@ -1,0 +1,419 @@
+ ==] Java Framework:
+   -> Java Framework is a collection of classes of pre-defined code
+    that allows the developers to add them to their own solve a problem.
+   -> It provide the required functionality to build and develop an application.
+
+ ==] Hibernate :-
+   -> Hibernate is a java Framework that simplifies the development of java applications
+      to interact with the database.
+   -> Hibernate is ORM (Object Relational Mapping) tool. ( To download ORM link:https://hibernate.org/orm/releases/ ).
+   -> Hibernate is an Open source, lightweight.
+   -> Hibernate is Non-invasive framework,
+      means it won`t force the programmers to extends/implement any classes/interface.
+   -> It is invested by Gavin King in 2001.
+   -> Any type of application can build with Hibernate Framework.
+   -> In Hibernate it automatically CREATE THE TABLES with the help of some @Annotation.
+   -> It automatically generates the PRIMARY KEY with the help of @Annotation.
+   -> We use the Hibernate to performed the CRUD (Create Read Update delete) Operation.
+
+ ==] ORM Tool :-
+   -> ORM stands for Object Relational Mapping.
+   -> ORM is programming technique is used to establish the connection between JAVA to Relational DATABASE.
+   -> ORM tool internally uses the JDBC API to interact with the database.
+
+ ==] Advantages of Hibernate Over JDBC :-
+   1) Hibernate is Database Independent, Whereas JDBC is Database Dependent.
+     -> Hibernate makes use of HQL.
+     -> HQL (Hibernate Query Language) is the Object-oriented version of SQL.
+     -> HQL generates the database independent queries, so  no need to write database specify queries.
+
+   2) Hibernate never throws Checked exception. So, Hibernate is an exception free framework.
+      -> Whereas JDBC throws Checked exception.
+
+   3) Hibernate does not create a connection object each time.
+     -> It maintains a connection pool(Contains Object of Connection)
+     -> Whereas in JDBC for each connection requested each time a new connection Object will be created.
+
+   4) The performance of Hibernate Framework is fast because cache is internally used in hibernate framework.
+     -> Whereas in JDBC id not having cache.
+
+   5) Hibernate Framework provides the facility to create the tables of the database automatically.
+     -> So there is no need to create the tables in the database manually
+     -> But In JDBC table should be created manually.
+
+   6) Fetching data from multiple tables is easy in Hibernate Framework.
+     -> But Not in JDBC.
+
+ ==] Is Hibernate A replacement of JDBC?:-
+     -> No, Hibernate is not a replacement of JDBC
+        Because all other API`S make of JDBC only, to connect with the database.
+
+     JAVA --> HIBERNATE --> JDBC --> DRIVER --> DATABASE
+
+ ==] In Hibernate how data will be Stored?:-
+     -> In Hibernate Data will be stored in the form of an OBJECT.
+     -> whereas in JDBC data will be stored in the form of VALUES.
+     -> So, Each time in JDBC conversion will happen leads to performance problems.\
+
+    In Hibernate -> JAVA <--> OBJECT <--> DATABASE
+    In JDBC      -> JAVA <--> OBJECT <--> VALUES <--> DATABASE
+
+ ==] Project Building Tool:-
+    1) Maven 2) Ant 3) Gradle etc..
+    1) Maven:
+     -> It is Project Building tool
+     -> It will provide the structure of the project.
+     -> With the help of Maven we can Design Medium Application and Larger Scale Application.
+     -> Maven have pom.xml (Project Object Model) file to add dependency.
+
+ ==] WHAT ARE THE SIMPLE HIBERNATE APPLICATION REQUIREMENTS:-
+     1) Entity Class/POJO (Plain Old Java Object) Class.
+     2) Mapping file ( Required if you are not using annotation).
+     3) Configuration file ( hibernate.cfg.xml).
+     4) DAO ( Data Access Object) Class ( where we write our logic to work with database).
+
+ ==] WHAT ARE THE STEPS TO DEVELOP HIBERNATE APPLICATION:-
+
+   STEP 1: Develop persistent/Domain/Entity/Pojo Class for each table of the Relational model.
+
+   STEP 2: For each Entity Develop a Mapping File or Hibernate Annotation.
+
+   STEP 3: Develop the Configuration File ( hibernate.cfg.XML).
+           --> DB Configuration
+           --> Dialect Configuration
+           --> Mapping Configuration
+
+   STEP 4: Add Hibernate Framework JAR Files in the ClassPath and Create a Session Object by using SessionFactory.
+
+   STEP 5: Create a Transaction Object by using a Session.
+         -> Make use of Hibernate API and perform Persistent operations.
+
+ ==] Explanation:-
+   1] POJO CLASS:
+     -> POJO stands for Plain Old Java Object.
+     -> POJOs are used for increasing the readability and re-usability of a program.
+     -> It is an ordinary java object, not bound by any special restriction other than those forced by the java
+        language specification and not requiring any classpath.
+
+   2] MAPPING FILE:
+     -> Mapping file is the heart of Hibernate Application.
+     -> Every ORM tool needs this mapping,
+     -> Mapping is the mechanism of placing an objects properties into columns of a tables.
+     -> The Mapping file contains MAPPING from a POJO class name to a tables name
+        And POJO Class variable names to table column names.
+
+   3] CONFIGURATION FILE:
+     -> It is an XML file in which database Connection details (username, password, url, Driver name)
+     -> And Hibernate properties (dialect, show-sql, second-level-cache ..etc)
+     -> And Mapping file name(s) are specified to the Hibernate.
+       i.e:
+         <hibernate-configuration>
+             <session-factory>
+           <property name="connection.driver_Class">com.mysql.jdbc.Driver</property>
+                   <property name="connection.url">jdbc:mysql://localhost:3306/Framework</property>
+                   <property name="connection.username">root</property>
+                   <property name="connection.password">805026</property>
+             </session-factory>
+         </hibernate-configuration>
+
+     -> Hibernate uses this file to establish connection to the particular database server.
+
+     -> Standard for this file is <hibernate.cfg.xml> We must create one configuration file
+        for each database we are going to use, Suppose if we want to connect with 2 databases Like Oracle,MySQL,
+         Then we must create 2 Configuration files.
+       NO.OF DATABASE WE ARE USING = THAT MANY NO. OF CONFIGURATION FILES.
+
+ ==] WE CAN WRITE THIS CONFIGURATION IN 2 WAYS:-
+     1)XML File
+     2)Properties File ( old style)
+
+     Note:-
+      a) Actually in Hibernate 1.x, 2.x we defined this configuration by using properties file,
+         but from 3.x XML came into picture.
+      b) XML files are always recommended to use.
+
+    <!DOCTYPE hibernate-configuration PUBLIC
+            "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+            "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+                 ** (Download index of DTD link: https://hibernate.org/dtd/ )
+
+    1) DTD:-
+     -> It will import the expected tag from Hibernate repository.
+     -> The DTD in the Hibernate jar is a good way to know what are the attributes that can be included
+        and the expected name for that tag.
+
+    2) <hibernate-configuration>:-
+     -> It contains a set of configuration setting to database and other related parameters.
+
+    3) <session-factory>:-
+     -> SessionFactory is a factory for Session Object.
+     -> The properties to be declared in session factory are:-
+        1) <property name="connection.driver_Class"></property>
+        2) <property name="connection.url"></property>
+        3) <property name="connection.username"></property>
+        4) <property name="connection.password"></property>
+
+        5) <property name="dialect"></property>
+          -> The dialect specifies the type of database used in the Hibernate,
+             So, That Hibernate Generates appropriate types of SQL statements.
+
+        6) <property name="hbm2ddl.auto"></property>
+          -> It specifies automatic table creation.
+           * create:- Each time table will be created.
+           * update:- Data will be updated in the same table.
+
+        7) <property name="show_sql"></property>
+          -> To print the SQL queries in Console.
+            Etc.....
+
+        Example:
+          <!DOCTYPE hibernate-configuration PUBLIC
+                  "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                  "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+          <hibernate-configuration>
+              <session-factory>
+
+                  <property name="connection.driver_Class">com.mysql.jdbc.Driver</property>
+                  <property name="connection.url">jdbc:mysql://localhost:3306/Framework</property>
+                  <property name="connection.username">root</property>
+                  <property name="connection.password">805026</property>
+
+                  <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+                  <property name="hbm2ddl.auto">create</property>
+                  <property name="show_sql">true</property>
+                  <property name="format_sql">true</property>
+
+                 <mapping class="com.hibernateApp.firstProject.Student"/>
+
+              </session-factory>
+          </hibernate-configuration>
+
+   4] DAO CLASS:
+     (How to make use of Hibernate API to perform persistent operations):
+     STEP 1:
+      * CREATE CONFIGURATION OBJECT :-
+       --> Configuration is a CLASS Which is present in org.hibernate.cfg package.
+       --> It activates the Hibernate Framework.
+
+       --> It reads both configuration file and mapping files.
+
+         *) Configuration cfg = new Configuration();
+
+         *) cfg.configure();
+       --> It checks weather the config file is syntactically correct or not.
+       --> If the config file is not valid then it will throw an exception.
+       --> If it is valid then it creates a meta-data in memory and returns the
+            meta-data to the object to represent the config file.
+
+     STEP 2:
+      * SessionFactory:-(Session is a TIME PERIOD means Time gap between start and stop)
+       --> SessionFactory is an interface which is present in org.hibernate package
+       --> It is used to create Session Object.
+       --> It is immutable and thread-safe in nature.
+
+       --> buildSessionFactory():
+       --> It is the factory helper method.
+       --> buildSessionFactory() method gathers the meta-data which is in the cfg object.
+       --> From the cfg object it takes the JDBC information and creates a JDBC connection.
+        i.e:
+            SessionFactory factory = cfg.buildSessionFactory();
+
+     STEP 3:
+      * Session:
+      --> Session is an interface which is present in the org.hibernate package.
+      --> Session object is created based upon SessionFactory object
+          i.e, factory.
+      --> It OPENS the Connection/Session with Database software through Hibernate Framework.
+      --> It is light-weight object and it is not thread-safe.
+      --> Session object are used to perform CRUD ( Create, Read, Update, Delete) Operations.
+       i.e:
+           Session session = factory.openSession();
+
+     STEP 4:
+      * Transaction:
+      --> Transaction objects are used whenever we perform any operation
+          and based upon that operation there is changes in the database.
+      --> Transaction object is used to give the instruction to the database to make the changes
+          that happen because of operations a permanent by using commit() method.
+        i.e:
+            Transaction tx = session.beginTransaction();
+            tx.commit();
+
+    **) Example of this all DAO class Steps:
+
+          System.out.println("Beginning");
+
+          		Configuration cfg = new Configuration();
+          		cfg.configure("hibernate.cfg.xml");
+          		SessionFactory factory = cfg.buildSessionFactory();
+
+          		st = new Student();
+          		st.setUsn(23);
+          		st.setName("Da");
+          		st.setMarks(96.95);
+
+          		System.out.println(st);
+
+          		Session session = factory.openSession();
+
+          		Transaction ts = session.beginTransaction();
+                   session.save(st);
+                   ts.commit();
+                   session.close();
+                   factory.close();
+
+                   System.out.println("Conclusion");
+                   
+ ==] Hibernate Annotation:
+   --> @Entity - use to mark any class as Entity.
+
+   --> @Table - use to change the table details.
+
+   --> @ld- use to mark column as id(primary key).
+
+   --> @GeneratedValue- Hibernate will automatically generate values for that using an internal sequence.
+       Therefore we don't have to set it manually.
+
+   --> @Column-Can be used to specify column mappings. For example, to change the column name in the
+       associated table in database.
+
+   --> @Transient-This tells Hibernate not to save this field.
+
+   -->@Temporal- @Temporal over a date field tells Hibernate the format in which the date needs to be saved.
+
+   --> @Lob-@Lob tells Hibernate that this is a large object, not a simple object.
+      -> @OneToOne, @OneToMany, @ManyToOne, @ManyToMany @Join Column etc.
+      
+   --> @JoinColumn - It is used to merge the column in database.   
+      
+ ==] FETCH DATA:-
+   --> get():
+     -> get method of Hibernate Session returns null if object is not found in cache as well as on database.
+     -> Use if you are not sure that object exists in DB or not.
+     
+   --> load():
+     -> load method throws ObjectNotFoundException if object is not found on cache as well as on database 
+         but never return null.  
+     -> Use if you are  sure that Object exists.    
+ 
+
+ ==] MAPPING:-
+  --> The mapping is one of the key feature in Hibernate is used to established connection between two table.
+
+  --> We are achieving the mapping in 4 ways:
+      1) OneToOne
+      2) OneToMany
+      3) ManyToOne
+      4) ManyToMany
+
+    1) OneToOne:-
+      -> This mapping is nothing but one single entity is associated with single instance of another entity.
+      -> We achieved OneToOne mapping with the help of @Annotation is called @OneToOne.
+      EG:-
+         @Entity                  @Entity
+         Student                  AadhaarCard
+         @Id                      @Id
+         id                       id
+         name                     address
+         marks                    ad_No
+         @OneToOne
+         AadhaarCard card;
+
+    2) OneToMany:-
+      -> This mapping is nothing but one row in a table is mapped with multiple row in another table.
+      -> We achieved OneToMany mapping with the help of @Annotation is called @OneToMany.
+      EG:
+         @Entity
+         public class Person {
+             @Id
+             @GeneratedValue(strategy = GenerationType.AUTO)
+             private int id;
+             private String name;
+             @OneToMany(mappedBy = "person")
+             private List<Address> addresses;
+         }
+
+    3) ManyToOne:-
+      -> This mapping is nothing but many row in the table is mapped with single row in another table.
+      -> We achieved ManyToOne mapping with the help of @Annotation is called @ManyToOne.
+
+    4) ManyToMany:-
+      -> This mapping nothing but many row in the table is mapped with multiple row in another table.
+      -> We achieved ManyToMany mapping with the help of @Annotation is called @ManyToMany.
+
+
+  ==] CASCADING:-
+   --> Is the One of key feature in the Hibernate is used whenever superclass affected by any CRUD Operations
+       automatically child class is also affected by same CRUD Operation and vice-versa.
+
+   --> Cascade Types:-
+      1)persist
+      2)remove
+      3)merge
+      4)all -> It will perform all cascade types.
+
+
+  ==] FETCHING TYPE:-
+    --> It is one of strategy in Hibernate. and it is used to specify how we get the data from the database.
+    --> In Hibernate we have TWO fetching they are:-
+         1) Lazy Fetch
+         2) Eager Fetch
+      1) Lazy Fetch:-
+        -> The Lazy fetch is  associated data loads only when we explicitly call getter() or size() method.
+
+      2) Eager Fetch:-
+        -> The Eager fetch is associated data loads ON THE SPOT.
+
+      i.e:
+         1)OneToOne -> Eager
+         2)OneToMany -> Lazy
+         3)ManyToOne -> Eager
+         4)ManyToMany -> Lazy
+
+       EG:
+          @Entity
+          public class Address {
+              @Id
+              @GeneratedValue(strategy = GenerationType.AUTO)
+              private int id;
+              private String street;
+              private int houseNumber;
+              private String city;
+              private int zipCode;
+              @ManyToOne(fetch = FetchType.LAZY)
+            //@ManyToOne(fetch = FetchType.EAGER)
+              private Person person;
+
+
+  ==] HIBERNATE/PERSISTENCE LIFE CYCLE STATES:-
+  --> In Hibernate, either we create an object of an entity and save it into the database, or we fetch the data of an entity from the database. Here, each entity is associated with the lifecycle. The entity object passes through the different stages of the lifecycle.
+
+  --> The Hibernate lifecycle contains the following states: -
+      1)Transient state
+      2)Persistent state
+      3)Detached state
+
+     1) Transient state:-
+       -> The transient state is the initial state of an object.
+       -> Once we create an instance of POJO class, then the object entered in the transient state.
+       -> Here, an object is not associated with the Session. So, the transient state is not related to any database.
+       -> Hence, modifications in the data don't affect any changes in the database.
+       -> The transient objects exist in the heap memory. They are independent of Hibernate.
+
+     2) Persistent state:-
+       -> As soon as the object associated with the Session, it entered in the persistent state.
+       -> Hence, we can say that an object is in the persistence state when we save or persist it.
+       -> Here, each object represents the row of the database table.
+       -> So, modifications in the data make changes in the database.
+
+     3) Detached State:-
+       -> Once we either close the session or clear its cache, then the object entered into the detached state.
+       -> As an object is no more associated with the Session,
+           modifications in the data don't affect any changes in the database.
+       -> However, the detached object still has a representation in the database.
+       -> If we want to persist the changes made to a detached object,
+           it is required to reattach the application to a valid Hibernate session.
+       -> To associate the detached object with the new hibernate session,
+          use any of these methods - load(), merge(), refresh(), update() or save()
+            on a new session with the reference of the detached object.

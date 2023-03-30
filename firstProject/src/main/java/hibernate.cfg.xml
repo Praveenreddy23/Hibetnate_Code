@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DTD will import the expected tag from Hibernate repository.  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        
+ <!--  It contains a set of configuration setting to database and other related parameters.-->
+<hibernate-configuration>
+<!-- SessionFactory is a factory for Session Object. -->
+    <session-factory>
+        <!-- DB Configuration -->
+        <property name="connection.driver_Class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/Framework</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">805026</property>
+        <!-- Dialect Configuration -->
+<!-- The dialect specifies the type of database used in the Hibernate, -->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        
+        <!-- It specifies automatic table creation.
+           * create:- Each time table will be created.
+           * update:- Data will be updated in the same table. -->
+        <property name="hbm2ddl.auto">update</property>
+        
+        <!-- To print the SQL queries in Console. -->
+        <property name="show_sql">true</property>
+        
+        <!-- To print the SQL queries in Console with a format -->
+        <property name="format_sql">true</property>
+        
+        <!-- Mapping Configuration -->
+        <!-- FullyQualifiedClassName -->
+        <mapping class="com.hibernateApp.firstProject.Student"/>
+       <mapping class="com.hibernateApp.firstProject.Emp"/>
+       <mapping class="com.hibernateApp.firstProject.Address"/>
+       
+       <!-- OneToOne -->
+       <mapping class ="com.mapping.Answer"/>
+       <mapping class ="com.mapping.Question"/>
+       
+       <!-- OneToMany -->
+       <mapping class="com.mapping.Employee"/>
+       <mapping class="com.mapping.Emp_Account"/>
+       
+       <!-- ManyToMany -->
+       <mapping class="com.mapping.Students"/>
+       <mapping class="com.mapping.Std_Course"/>
+       
+
+
+
+    </session-factory>
+</hibernate-configuration>
